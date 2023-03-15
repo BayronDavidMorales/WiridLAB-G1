@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class AimCamera : MonoBehaviour {
-  public Transform target;
+  	public Transform target;
+	public float distance = 0.1f;
 	Vector3 f0Dir= Vector3.zero;
 	Vector3 upVal= Vector3.zero;
 	float zoomDistance= 5;
@@ -21,7 +22,7 @@ public class AimCamera : MonoBehaviour {
 				f0Dir= Vector3.zero;
 			}
 		} else if( Input.GetMouseButton(1)&& Input.GetKey("left alt") ) {
-			zoomDistance= zoomDistance+(-Input.GetAxis("Mouse X")+Input.GetAxis("Mouse Y"))*0.1F;
+			zoomDistance= zoomDistance+(-Input.GetAxis("Mouse X")+Input.GetAxis("Mouse Y"))*0.2F;
 		} else if( Input.GetMouseButton(2) ) {
 			loc_x= -Input.GetAxis("Mouse X")*panWeight;
 			loc_y= -Input.GetAxis("Mouse Y")*panWeight;
