@@ -1,76 +1,51 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class MouseOrbit : MonoBehaviour {
+    public GameObject objectToManipulate;
+    public GameObject firstPersonController;
 
-    public Transform target;
-    public float distance = 5.0f;
-    public float xSpeed = 120.0f;
-    public float ySpeed = 120.0f;
+    private bool objectSelected;
+    private Vector3 lastMousePosition;
 
-    public float yMinLimit = -20f;
-    public float yMaxLimit = 80f;
-
-    public float distanceMin = .5f;
-    public float distanceMax = 15f;
-
-    private Rigidbody rigidbody;
-
-
-    float x = 0.0f;
-    float y = 0.0f;
-
-    // Use this for initialization
-    void Start ()
+    void Update()
     {
-        Vector3 angles = transform.eulerAngles;
-        x = angles.y;
-        y = angles.x;
-
-        rigidbody = GetComponent<Rigidbody>();
-
-        // Make the rigid body not change rotation
-        if (rigidbody != null)
+        // Detecta si el jugador hace clic izquierdo del mouse
+        if (Input.GetMouseButtonDown(0))
         {
-            rigidbody.freezeRotation = true;
-        }
-    }
-
-
-    void LateUpdate ()
-    {
-
-        if (target && (Input.GetButton("Fire1") || Input.mouseScrollDelta.y != 0))
-        {
-            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
-
-            y = ClampAngle(y, yMinLimit, yMaxLimit);
-
-            Quaternion rotation = Quaternion.Euler(y, x, 0);
-
-            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel")*5, distanceMin, distanceMax);
-
             RaycastHit hit;
-            if (Physics.Linecast (target.position, transform.position, out hit))
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            // Realiza un raycast para detectar si el jugador está apuntando a un objeto en la escena
+            if (Physics.Raycast(ray, out hit))
             {
-                distance -=  hit.distance;
+                if (hit.collider.gameObject == objectToManipulate)
+                {
+                    // Si el jugador está apuntando a un objeto, selecciona ese objeto y desactiva los movimientos del primer personaje
+                    objectSelected = true;
+                    lastMousePosition = Input.mousePosition;
+                    firstPersonController.GetComponent<CharacterController>().enabled = false;
+                }
             }
-            Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-            Vector3 position = rotation * negDistance + target.position;
-
-            transform.rotation = rotation;
-            transform.position = position;
         }
-    }
 
-    public static float ClampAngle(float angle, float min, float max)
-    {
-        if (angle < -360F)
-            angle += 360F;
-        if (angle > 360F)
-            angle -= 360F;
-        return Mathf.Clamp(angle, min, max);
+        // Si el jugador ha seleccionado un objeto, mueve y rota el objeto según el movimiento del mouse
+        if (objectSelected)
+        {
+            float deltaX = Input.mousePosition.x - lastMousePosition.x;
+            float deltaY = Input.mousePosition.y - lastMousePosition.y;
+
+            objectToManipulate.transform.Rotate(Vector3.up, deltaX, Space.World);
+            objectToManipulate.transform.Rotate(Vector3.right, -deltaY, Space.World);
+
+            lastMousePosition = Input.mousePosition;
+
+            // Detecta si el jugador ha soltado el botón del mouse para dejar de manipular el objeto y reactiva los movimientos del primer personaje
+            if (Input.GetMouseButtonUp(0))
+            {
+                objectSelected = false;
+                firstPersonController.GetComponent<CharacterController>().enabled = true;
+            }
+        }
     }
 }
