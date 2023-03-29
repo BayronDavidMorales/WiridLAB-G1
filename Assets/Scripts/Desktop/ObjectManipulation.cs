@@ -11,6 +11,7 @@ public class ObjectManipulation : MonoBehaviour
     private Vector3 originalScale;
     private Quaternion originalRotation;
 
+
     private void Update()
     {
             
@@ -36,6 +37,7 @@ public class ObjectManipulation : MonoBehaviour
 
         if (objectSelected)
         {
+            Cursor.visible = true;
             // Rota el objeto con el ratón
             float mouseX = Input.GetAxis("Mouse X") * rotationSpeed;
             float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed;

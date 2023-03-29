@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -26,6 +27,10 @@ public class PanelManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape) && FPSIsActive == true)
+        {
+            DisableFPSController();
+        }
+        else if (Input.GetKeyUp(KeyCode.Escape))
         {
             DisableFPSController();
         }
@@ -60,9 +65,9 @@ public class PanelManager : MonoBehaviour
 
     public void EnableFPSController()
     {
-        FPSIsActive = true;
         FPSController.GetComponent<FirstPersonController>().enabled = true;
-        miniMap.SetActive(true);
+        FPSIsActive = true;
+        activeMinimap();
     }
 
     public void DisableFPSController()
@@ -71,5 +76,18 @@ public class PanelManager : MonoBehaviour
         FPSController.GetComponent<FirstPersonController>().enabled = false;
     }
 
+    public void activeMinimap() {
+        miniMap.SetActive(true);
+        FPSController.GetComponent<MiniMapComponent>().enabled = true;
+
+        // Obtiene todos los objetos con la capa "ObjectToManipulate"
+        GameObject[] objectsToManipulate = GameObject.FindObjectsOfType<GameObject>().Where(obj => obj.layer == LayerMask.NameToLayer("ObjectToManipulate")).ToArray();
+
+        // Recorre los objetos y activa el componente "MiniMapComponent"
+        foreach (GameObject obj in objectsToManipulate)
+        {
+            obj.GetComponent<MiniMapComponent>().enabled = true;
+        }
+    }
 
 }
