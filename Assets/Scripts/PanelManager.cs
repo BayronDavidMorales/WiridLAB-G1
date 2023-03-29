@@ -10,19 +10,29 @@ public class PanelManager : MonoBehaviour
     public GameObject panelConfiguracion;
     public GameObject panelMenuInf;
     public GameObject panelMenuLat;
-
+    public GameObject miniMap;
     public GameObject FPSController;
 
     RectTransform rectTransformMenuLat;
 
     bool isopenlat=false;
+    bool FPSIsActive = false;
 
     void Start(){
         panelConfiguracion.SetActive(false);
         rectTransformMenuLat = panelMenuLat.GetComponent<RectTransform>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape) && FPSIsActive == true)
+        {
+            DisableFPSController();
+        }
+    }
+
     public void openInicio(){
+        miniMap.SetActive(false);
         panelInicio.SetActive(true);
     }
 
@@ -50,11 +60,14 @@ public class PanelManager : MonoBehaviour
 
     public void EnableFPSController()
     {
+        FPSIsActive = true;
         FPSController.GetComponent<FirstPersonController>().enabled = true;
+        miniMap.SetActive(true);
     }
 
     public void DisableFPSController()
     {
+        FPSIsActive = false;
         FPSController.GetComponent<FirstPersonController>().enabled = false;
     }
 
