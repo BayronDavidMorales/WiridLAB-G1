@@ -69,7 +69,7 @@ public class ObjectManipulation : MonoBehaviour
             objectToManipulate.transform.localScale = originalScale;
             objectToManipulate.transform.rotation = originalRotation;
         }catch{
-            Debug.LogError("");
+           
         }
 
         objectToManipulate = null;

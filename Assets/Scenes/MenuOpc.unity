@@ -302,6 +302,7 @@ MonoBehaviour:
   panelConfiguracion: {fileID: 181440322}
   panelMenuInf: {fileID: 814692759}
   panelMenuLat: {fileID: 337969778}
+  FPSController: {fileID: 1305001486}
 --- !u!1 &105388191
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,6 +804,10 @@ PrefabInstance:
     - target: {fileID: 7969170022321907, guid: 3e53754a5d05fc549a149092b4526b8b, type: 3}
       propertyPath: m_Name
       value: FPSController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969170033064723, guid: 3e53754a5d05fc549a149092b4526b8b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e53754a5d05fc549a149092b4526b8b, type: 3}
@@ -3146,6 +3151,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &920663568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920663566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1698544, y: 0.086637974, z: 0.11634741}
+  m_Center: {x: -0.0020109415, y: -0.00092525635, z: 0}
 --- !u!1 &967612596
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,6 +4311,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 59735733}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: closeConfig
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1291061560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4331,6 +4361,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291061557}
   m_CullTransparentMesh: 1
+--- !u!1 &1305001486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969170022321907, guid: 3e53754a5d05fc549a149092b4526b8b, type: 3}
+  m_PrefabInstance: {fileID: 216449919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1368878972
 GameObject:
   m_ObjectHideFlags: 0
@@ -5295,7 +5330,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1896332374}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 59735733}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: EnableFPSController
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1896332374
 MonoBehaviour:
   m_ObjectHideFlags: 0

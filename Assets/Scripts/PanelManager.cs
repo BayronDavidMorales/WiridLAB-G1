@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
+
 
 public class PanelManager : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class PanelManager : MonoBehaviour
     public GameObject panelConfiguracion;
     public GameObject panelMenuInf;
     public GameObject panelMenuLat;
+
+    public GameObject FPSController;
+
     RectTransform rectTransformMenuLat;
 
     bool isopenlat=false;
@@ -41,6 +46,16 @@ public class PanelManager : MonoBehaviour
             rectTransformMenuLat.anchoredPosition = new Vector2(-1105, 0);
             isopenlat = false;
         }
+    }
+
+    public void EnableFPSController()
+    {
+        FPSController.GetComponent<FirstPersonController>().enabled = true;
+    }
+
+    public void DisableFPSController()
+    {
+        FPSController.GetComponent<FirstPersonController>().enabled = false;
     }
 
 
