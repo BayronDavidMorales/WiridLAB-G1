@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PinManager : MonoBehaviour
 {
     bool visible=false;
+    bool isopenlat=false;
+
     private Camera cam;
     public GameObject nodo;
     public GameObject pin;
+    public GameObject panelMenuLat;
+    RectTransform rectTransformMenuLat;
+    public TextMeshProUGUI tituloNodo;
+    public TextMeshProUGUI descripcionNodo;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        rectTransformMenuLat = panelMenuLat.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -35,6 +43,8 @@ public class PinManager : MonoBehaviour
 
             if(coll.OverlapPoint(point)){
                 cambiarEstadoNodo(nodo);
+                setpositionLatPanel();
+                
             }
         }
     }
@@ -47,5 +57,20 @@ public class PinManager : MonoBehaviour
             nodo.SetActive(true);
         }
     }
+
+    public void setpositionLatPanel(){
+        if(isopenlat == false){
+            rectTransformMenuLat.anchoredPosition = new Vector2(-720,0);
+            tituloNodo.text="Nodo Iot            No. 108";
+            descripcionNodo.text="USE: NRF24L0;                                                        OPERATIVE SYSTEM: Ubuntu, 20.04.2 LTS;      ARCHITECTURE: ARM;                                                  BOARD: RASPBERRY Pi Model 3B V1.2;                                                                       MICROCONTROLLER: ARDUINO NANO;                                 SENSORS AND MODULES: NRF24L01 CONECTADO A ARDUINO NANO, MOSFET 5V, DHT11 – NANO;   SERVICES: Node-Red + Arduino CLI + Grafana + InfluxDB 2.0, VNC + JUPYTER";
+            isopenlat = true;
+        }else{
+            rectTransformMenuLat.anchoredPosition = new Vector2(-1105, 0);
+            tituloNodo.text="";
+            descripcionNodo.text="";
+            isopenlat = false;
+        }
+    }
+    
 
 }
