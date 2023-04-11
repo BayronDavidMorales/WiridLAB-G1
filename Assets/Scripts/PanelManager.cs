@@ -18,6 +18,7 @@ public class PanelManager : MonoBehaviour
     }
 
     public void openInicio(){
+        panelConfiguracion.SetActive(false);
         panelInicio.SetActive(true);
     }
 
