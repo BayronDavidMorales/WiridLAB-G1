@@ -50,11 +50,19 @@ public class MiniMapComponent : MonoBehaviour {
 	}
 
 	void OnDisable(){
-		miniMapController.UnregisterMapObject (mmo,this.gameObject);
+		try
+		{
+			miniMapController.UnregisterMapObject (mmo,this.gameObject);
+		}
+		catch { }
 	}
 
 	void OnDestroy(){
-		miniMapController.UnregisterMapObject (mmo,this.gameObject);
+		try
+		{
+            miniMapController.UnregisterMapObject(mmo, this.gameObject);
+		}
+		catch { }
 	}
 
 }

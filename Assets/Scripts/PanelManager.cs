@@ -4,17 +4,16 @@ using System.Linq;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
-
 public class PanelManager : MonoBehaviour
 {
     public GameObject panelInicio;
     public GameObject panelConfiguracion;
     public GameObject panelMenuInf;
     public GameObject panelMenuLat;
+    RectTransform rectTransformMenuLat;
+
     public GameObject miniMap;
     public GameObject FPSController;
-
-    RectTransform rectTransformMenuLat;
 
     bool isopenlat=false;
     bool FPSIsActive = false;
@@ -23,7 +22,6 @@ public class PanelManager : MonoBehaviour
         panelConfiguracion.SetActive(false);
         rectTransformMenuLat = panelMenuLat.GetComponent<RectTransform>();
     }
-
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape) && FPSIsActive == true)
@@ -37,7 +35,7 @@ public class PanelManager : MonoBehaviour
     }
 
     public void openInicio(){
-        miniMap.SetActive(false);
+        panelConfiguracion.SetActive(false);
         panelInicio.SetActive(true);
     }
 
@@ -76,7 +74,8 @@ public class PanelManager : MonoBehaviour
         FPSController.GetComponent<FirstPersonController>().enabled = false;
     }
 
-    public void activeMinimap() {
+    public void activeMinimap()
+    {
         miniMap.SetActive(true);
         FPSController.GetComponent<MiniMapComponent>().enabled = true;
 
@@ -89,5 +88,4 @@ public class PanelManager : MonoBehaviour
             obj.GetComponent<MiniMapComponent>().enabled = true;
         }
     }
-
 }
