@@ -4,6 +4,7 @@ public class VRMouseCamera : MonoBehaviour
 {
     public float sensitivity = 2.0f; // Sensibilidad del mouse
     public float smoothing = 2.0f; // Suavidad del movimiento
+    public bool cameraEnabled = true; // Habilita o deshabilita el movimiento de cámara
 
     private Vector2 _mouseLook; // Vector de movimiento del mouse
     private Vector2 _smoothV; // Vector suavizado
@@ -17,6 +18,8 @@ public class VRMouseCamera : MonoBehaviour
     // Método Update se ejecuta una vez por frame
     void Update()
     {
+        if (!cameraEnabled) return; // Si el movimiento de cámara está deshabilitado, sale del método
+
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
         mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity * smoothing, sensitivity * smoothing));

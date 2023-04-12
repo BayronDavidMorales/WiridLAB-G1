@@ -10,13 +10,12 @@ public class ObjectManipulation : MonoBehaviour
     private bool objectSelected;
     private Vector3 originalScale;
     private Quaternion originalRotation;
-
+    private bool cameraEnabled = true; // Habilita o deshabilita el movimiento de cámara
 
     private void Update()
     {
-            
         if (Input.GetMouseButtonDown(0))
-        {   
+        {
             // Lanza un rayo hacia adelante desde la posición de la cámara
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
@@ -24,14 +23,16 @@ public class ObjectManipulation : MonoBehaviour
             // Si el rayo impacta un objeto en la capa especificada, lo selecciona
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask))
             {
+                // Deshabilita el movimiento de cámara
+                cameraEnabled = false;
                 SelectObject(hitInfo.collider.gameObject);
             }
         }
-           
 
         if (Input.GetMouseButtonUp(0))
         {
-            // Desselecciona el objeto
+            // Habilita el movimiento de cámara
+            cameraEnabled = true;
             DeselectObject();
         }
 
@@ -61,21 +62,18 @@ public class ObjectManipulation : MonoBehaviour
         // Guarda la escala y rotación original del objeto
         originalScale = objectToManipulate.transform.localScale;
         originalRotation = objectToManipulate.transform.rotation;
-
-
     }
 
     private void DeselectObject()
     {
-        try{
+        try
+        {
             objectToManipulate.transform.localScale = originalScale;
             objectToManipulate.transform.rotation = originalRotation;
-        }catch{
-           
         }
+        catch { }
 
         objectToManipulate = null;
         objectSelected = false;
     }
-
 }

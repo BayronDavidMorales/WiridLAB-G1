@@ -63,7 +63,7 @@ public class PanelManager : MonoBehaviour
 
     public void EnableFPSController()
     {
-        FPSController.GetComponent<FirstPersonController>().enabled = true;
+        FPSController.GetComponent<VRMouseCamera>().enabled = true;
         FPSIsActive = true;
         activeMinimap();
     }
@@ -71,7 +71,7 @@ public class PanelManager : MonoBehaviour
     public void DisableFPSController()
     {
         FPSIsActive = false;
-        FPSController.GetComponent<FirstPersonController>().enabled = false;
+        FPSController.GetComponent<VRMouseCamera>().enabled = false;
     }
 
     public void activeMinimap()

@@ -11,7 +11,6 @@ public class VRSphereNavigation : MonoBehaviour
     // Método Start se ejecuta al inicio del juego
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor del mouse en el centro de la pantalla
 
         // Busca todas las esferas dentro del objeto padre y las almacena en el arreglo "spheres"
         spheres = new GameObject[sphereParent.childCount];
@@ -28,22 +27,18 @@ public class VRSphereNavigation : MonoBehaviour
     // Método Update se ejecuta una vez por frame
     void Update()
     {
-        // Cambia a la esfera siguiente si se presiona la tecla izquierda
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // Cambia a una esfera aleatoria si se presiona la tecla izquierda o derecha
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            spheres[currentSphereIndex].SetActive(false); // Desactiva la esfera actual
-            currentSphereIndex--; // Cambia al índice de la esfera siguiente
-            if (currentSphereIndex < 0) currentSphereIndex = spheres.Length - 1; // Si se llega al final del arreglo, regresa al inicio
-            spheres[currentSphereIndex].SetActive(true); // Activa la esfera siguiente
-        }
+            int newIndex;
+            do
+            {
+                newIndex = Random.Range(0, spheres.Length); // Genera un índice aleatorio para las esferas
+            } while (newIndex == currentSphereIndex); // Asegura que el índice aleatorio no sea igual al índice actual
 
-        // Cambia a la esfera anterior si se presiona la tecla derecha
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
             spheres[currentSphereIndex].SetActive(false); // Desactiva la esfera actual
-            currentSphereIndex++; // Cambia al índice de la esfera anterior
-            if (currentSphereIndex >= spheres.Length) currentSphereIndex = 0; // Si se llega al final del arreglo, regresa al inicio
-            spheres[currentSphereIndex].SetActive(true); // Activa la esfera anterior
+            currentSphereIndex = newIndex; // Actualiza el índice de la esfera actual
+            spheres[currentSphereIndex].SetActive(true); // Activa la esfera aleatoria
         }
     }
 }
