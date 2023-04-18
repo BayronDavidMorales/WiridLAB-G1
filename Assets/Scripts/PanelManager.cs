@@ -8,9 +8,12 @@ public class PanelManager : MonoBehaviour
     public GameObject panelConfiguracion;
     public GameObject panelMenuInf;
     public GameObject panelMenuLat;
+    public GameObject T1;
+    public GameObject T2;
     RectTransform rectTransformMenuLat;
 
     bool isopenlat=false;
+    bool tuto=true;
 
     void Start(){
         panelConfiguracion.SetActive(false);
@@ -44,5 +47,22 @@ public class PanelManager : MonoBehaviour
         }
     }
 
+    public void openT1(){
+        if(tuto == true){
+            T1.SetActive(true);
+            tuto=false;
+        }
+    }
 
+    public void openT2(){
+        T2.SetActive(true);
+    }
+
+    public void closeT1(){
+        T1.SetActive(false);
+    }
+
+    public void closeT2(){
+        T2.SetActive(false);
+    }
 }
