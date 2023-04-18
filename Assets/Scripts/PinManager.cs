@@ -47,10 +47,12 @@ public class PinManager : MonoBehaviour
             if(Physics.Raycast(rayito, out RaycastHit raycastHit)){
                 //Cambio de estado del nodo presionado
                 for(int i=0; i<pines.Length;i++){
-                    CapsuleCollider2D coll = pines[i].GetComponent<CapsuleCollider2D>();
+                    Collider coll = pines[i].GetComponent<Collider>();
+                    if(coll == raycastHit.collider){
                         cambiarEstadoNodo(i);
                         setpositionLatPanel(i);
                         break;
+                    }                        
                 }
             }
       
@@ -78,7 +80,7 @@ public class PinManager : MonoBehaviour
     }
 
     public void setpositionLatPanel(int i){
-        if(isopenlat == false){
+        if(isopenlat == false || i != nodoaux){
             rectTransformMenuLat.anchoredPosition = new Vector2(-720,0);
             switch (i){
                 case 0: // Nodo Radio 72
