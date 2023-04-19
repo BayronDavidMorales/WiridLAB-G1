@@ -78,8 +78,11 @@ public class PinManager : MonoBehaviour
             {
                 if (j == i)
                 {
-                    nodos[j].SetActive(true);
-                    nodoaux = i;
+                    try {
+                        nodos[j].SetActive(true);
+                        nodoaux = i;
+                    }
+                    catch { }
                 }
                 else
                 {
@@ -89,9 +92,14 @@ public class PinManager : MonoBehaviour
         }
         else
         {
-            visible = true;
-            nodoaux = i;
-            nodos[i].SetActive(true);
+            
+            try
+            {
+                visible = true;
+                nodoaux = i;
+                nodos[i].SetActive(true);
+            }
+            catch { }
         }
     }
 
