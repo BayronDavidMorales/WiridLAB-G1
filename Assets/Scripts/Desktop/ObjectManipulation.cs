@@ -10,13 +10,14 @@ public class ObjectManipulation : MonoBehaviour
     private bool objectSelected;
     private Vector3 originalScale;
     private Quaternion originalRotation;
+    private bool cameraEnabled = true; // Habilita o deshabilita el movimiento de cámara
+    public VRMouseCamera vrMouseCamera;
 
 
     private void Update()
     {
-            
         if (Input.GetMouseButtonDown(0))
-        {   
+        {
             // Lanza un rayo hacia adelante desde la posición de la cámara
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
@@ -24,14 +25,16 @@ public class ObjectManipulation : MonoBehaviour
             // Si el rayo impacta un objeto en la capa especificada, lo selecciona
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask))
             {
+                // Deshabilita el movimiento de cámara
+                cameraEnabled = false;
                 SelectObject(hitInfo.collider.gameObject);
             }
         }
-           
 
         if (Input.GetMouseButtonUp(0))
         {
-            // Desselecciona el objeto
+            // Habilita el movimiento de cámara
+            cameraEnabled = true;
             DeselectObject();
         }
 
@@ -52,7 +55,6 @@ public class ObjectManipulation : MonoBehaviour
             objectToManipulate.transform.localScale = Vector3.Max(objectToManipulate.transform.localScale, Vector3.one * 0.1f);
         }
     }
-
     private void SelectObject(GameObject obj)
     {
         objectToManipulate = obj;
@@ -62,20 +64,29 @@ public class ObjectManipulation : MonoBehaviour
         originalScale = objectToManipulate.transform.localScale;
         originalRotation = objectToManipulate.transform.rotation;
 
-
+        // Desactiva el script VRMouseCamera
+        vrMouseCamera.enabled = false;
     }
+
+
+
 
     private void DeselectObject()
     {
-        try{
+        try
+        {
             objectToManipulate.transform.localScale = originalScale;
             objectToManipulate.transform.rotation = originalRotation;
-        }catch{
-           
+
         }
+        catch { }
 
         objectToManipulate = null;
         objectSelected = false;
+
+        // Activa el script VRMouseCamera
+        vrMouseCamera.enabled = true;
     }
+
 
 }

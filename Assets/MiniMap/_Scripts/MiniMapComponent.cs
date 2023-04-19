@@ -36,25 +36,36 @@ public class MiniMapComponent : MonoBehaviour {
 	MapObject mmo;
 
 	void OnEnable(){
-		miniMapController = GameObject.Find ("CanvasMiniMap").GetComponent<MiniMapController> ();
-		mme = new MiniMapEntity ();
-		mme.icon = icon;
-		mme.rotation = initialIconRotation;
-		mme.size = size;
-		mme.upAxis = upAxis;
-		mme.rotateWithObject = rotateWithObject;
-		mme.clampInBorder = clampIconInBorder;
-		mme.clampDist = clampDistance;
-
-		mmo = miniMapController.RegisterMapObject(this.gameObject, mme);
+		try
+		{
+			miniMapController = GameObject.Find("CanvasMiniMap").GetComponent<MiniMapController>();
+			mme = new MiniMapEntity();
+			mme.icon = icon;
+			mme.rotation = initialIconRotation;
+			mme.size = size;
+			mme.upAxis = upAxis;
+			mme.rotateWithObject = rotateWithObject;
+			mme.clampInBorder = clampIconInBorder;
+			mme.clampDist = clampDistance;
+			mmo = miniMapController.RegisterMapObject(this.gameObject, mme);
+		}
+		catch { }
 	}
 
 	void OnDisable(){
-		miniMapController.UnregisterMapObject (mmo,this.gameObject);
+		try
+		{
+			miniMapController.UnregisterMapObject (mmo,this.gameObject);
+		}
+		catch { }
 	}
 
 	void OnDestroy(){
-		miniMapController.UnregisterMapObject (mmo,this.gameObject);
+		try
+		{
+            miniMapController.UnregisterMapObject(mmo, this.gameObject);
+		}
+		catch { }
 	}
 
 }
