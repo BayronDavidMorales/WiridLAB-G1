@@ -25,10 +25,12 @@ public class VRSphereNavigation : MonoBehaviour
     }
 
     // Método Update se ejecuta una vez por frame
+    // Método Update se ejecuta una vez por frame
     void Update()
     {
-        // Cambia a una esfera aleatoria si se presiona la tecla izquierda o derecha
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        // Cambia a una esfera aleatoria si se presiona W, A, S, D, la tecla izquierda o la tecla derecha
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) ||
+            Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             int newIndex;
             do
@@ -41,4 +43,18 @@ public class VRSphereNavigation : MonoBehaviour
             spheres[currentSphereIndex].SetActive(true); // Activa la esfera aleatoria
         }
     }
+
+    public void ChangeSphere()
+    {
+        int newIndex;
+        do
+        {
+            newIndex = Random.Range(0, spheres.Length); // Genera un índice aleatorio para las esferas
+        } while (newIndex == currentSphereIndex); // Asegura que el índice aleatorio no sea igual al índice actual
+
+        spheres[currentSphereIndex].SetActive(false); // Desactiva la esfera actual
+        currentSphereIndex = newIndex; // Actualiza el índice de la esfera actual
+        spheres[currentSphereIndex].SetActive(true); // Activa la esfera aleatoria
+    }
+
 }
