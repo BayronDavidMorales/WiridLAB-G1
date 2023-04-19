@@ -76,7 +76,7 @@ public class PanelManager : MonoBehaviour
         activeMinimap();
 
         // Bloquea y oculta el cursor
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
     }
@@ -89,8 +89,8 @@ public class PanelManager : MonoBehaviour
         FPSController.GetComponent<ObjectManipulation>().enabled = false;
 
         // Desbloquea y muestra el cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
     }
 
     public void activeMinimap()
