@@ -46,9 +46,9 @@ public class AudioManager : MonoBehaviour
             }while(t!=true);
         }
 
-        for (int i=0; i<listaM.Length;i++){
-            Debug.Log(listaM[i]);
-        }
+        //for (int i=0; i<listaM.Length;i++){
+        //    Debug.Log(listaM[i]);
+        //}
 
         audManager = GetComponent<AudioSource>();
         for(int i=0;i<listaM.Length;i++){
