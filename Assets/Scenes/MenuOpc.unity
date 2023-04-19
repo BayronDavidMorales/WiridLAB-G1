@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 43921349}
   - component: {fileID: 43921348}
   - component: {fileID: 43921350}
+  - component: {fileID: 43921351}
   m_Layer: 0
   m_Name: Pin (2)
   m_TagString: Untagged
@@ -486,6 +487,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9199998, y: 1.9199998, z: 0.19999999}
   m_Center: {x: -0.000000029802322, y: 0, z: 0}
+--- !u!114 &43921351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43921345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a746a3ab875e91549a418b5a2aab20cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.015686274, g: 0.71248907, b: 1, a: 1}
 --- !u!1 &59735731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1456,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249889522}
   m_CullTransparentMesh: 1
+--- !u!84 &258220637
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 286
+  m_Height: 180
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &264161806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2166,43 +2217,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374210026}
   m_CullTransparentMesh: 1
---- !u!84 &401987479
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 286
-  m_Height: 180
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &418004140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,6 +2408,7 @@ GameObject:
   - component: {fileID: 450660006}
   - component: {fileID: 450660008}
   - component: {fileID: 450660009}
+  - component: {fileID: 450660010}
   m_Layer: 0
   m_Name: Pin
   m_TagString: Untagged
@@ -2495,6 +2510,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9200002, y: 1.9199998, z: 0.20000006}
   m_Center: {x: -0.000000014901161, y: -0.000000059604645, z: 0.00000023841858}
+--- !u!114 &450660010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450660005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a746a3ab875e91549a418b5a2aab20cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.015686274, g: 0.71248907, b: 1, a: 1}
 --- !u!1 &468407625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5149,6 +5177,7 @@ GameObject:
   - component: {fileID: 1037064264}
   - component: {fileID: 1037064263}
   - component: {fileID: 1037064265}
+  - component: {fileID: 1037064266}
   m_Layer: 0
   m_Name: Pin (4)
   m_TagString: Untagged
@@ -5250,6 +5279,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9199998, y: 1.9199998, z: 0.19999999}
   m_Center: {x: -0.000000059604645, y: 0, z: 0}
+--- !u!114 &1037064266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037064260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a746a3ab875e91549a418b5a2aab20cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.015686274, g: 0.71248907, b: 1, a: 1}
 --- !u!1 &1057220850
 GameObject:
   m_ObjectHideFlags: 0
@@ -5609,6 +5651,7 @@ GameObject:
   - component: {fileID: 1134761757}
   - component: {fileID: 1134761756}
   - component: {fileID: 1134761758}
+  - component: {fileID: 1134761759}
   m_Layer: 0
   m_Name: Pin (5)
   m_TagString: Untagged
@@ -5710,6 +5753,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9199998, y: 1.9199998, z: 0.19999999}
   m_Center: {x: -0.000000059604645, y: 0, z: 0}
+--- !u!114 &1134761759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134761753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a746a3ab875e91549a418b5a2aab20cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.015686274, g: 0.71248907, b: 1, a: 1}
 --- !u!1 &1134772193
 GameObject:
   m_ObjectHideFlags: 0
@@ -6588,43 +6644,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
---- !u!84 &1452445053
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 286
-  m_Height: 180
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &1462913499
 GameObject:
   m_ObjectHideFlags: 0
@@ -6750,6 +6769,7 @@ GameObject:
   - component: {fileID: 1499392856}
   - component: {fileID: 1499392855}
   - component: {fileID: 1499392857}
+  - component: {fileID: 1499392858}
   m_Layer: 0
   m_Name: Pin (1)
   m_TagString: Untagged
@@ -6851,6 +6871,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9199998, y: 1.9199998, z: 0.19999999}
   m_Center: {x: -0.000000014901161, y: 0, z: 0}
+--- !u!114 &1499392858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499392852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a746a3ab875e91549a418b5a2aab20cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.015686274, g: 0.71248907, b: 1, a: 1}
 --- !u!1 &1535611916
 GameObject:
   m_ObjectHideFlags: 0
@@ -8874,6 +8907,7 @@ GameObject:
   - component: {fileID: 2026981856}
   - component: {fileID: 2026981855}
   - component: {fileID: 2026981857}
+  - component: {fileID: 2026981858}
   m_Layer: 0
   m_Name: Pin (3)
   m_TagString: Untagged
@@ -8975,6 +9009,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9199998, y: 1.9199998, z: 0.19999999}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2026981858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026981852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a746a3ab875e91549a418b5a2aab20cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.015686274, g: 0.71248907, b: 1, a: 1}
 --- !u!1 &2057403727
 GameObject:
   m_ObjectHideFlags: 0
@@ -9682,7 +9729,7 @@ PrefabInstance:
     - target: {fileID: 4207951793739421900, guid: a958b96b1bf506742a9e6b041e67b31d, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1452445053}
+      objectReference: {fileID: 258220637}
     - target: {fileID: 4207951793739421900, guid: a958b96b1bf506742a9e6b041e67b31d, type: 3}
       propertyPath: orthographic size
       value: 3.74
