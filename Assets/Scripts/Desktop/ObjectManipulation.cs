@@ -13,9 +13,6 @@ public class ObjectManipulation : MonoBehaviour
     private bool cameraEnabled = true; // Habilita o deshabilita el movimiento de cámara
     public VRMouseCamera vrMouseCamera;
 
-    public Material toonOutlineMaterial;
-    private Material originalMaterial;
-
 
     private void Update()
     {
@@ -81,8 +78,6 @@ public class ObjectManipulation : MonoBehaviour
             objectToManipulate.transform.localScale = originalScale;
             objectToManipulate.transform.rotation = originalRotation;
 
-            // Restaura el material original del objeto deseleccionado
-            objectToManipulate.GetComponent<InteractableObject>().RestoreOriginalMaterial();
         }
         catch { }
 
