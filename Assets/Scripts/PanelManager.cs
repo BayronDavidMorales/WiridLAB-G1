@@ -24,13 +24,16 @@ public class PanelManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) && FPSIsActive == true)
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
-            DisableFPSController();
-        }
-        else if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            DisableFPSController();
+            if (FPSIsActive == true)
+            {
+                DisableFPSController();
+            }
+            else
+            {
+                EnableFPSController();
+            }
         }
     }
 
@@ -68,6 +71,11 @@ public class PanelManager : MonoBehaviour
         FPSController.GetComponent<ObjectManipulation>().enabled = true;
         FPSIsActive = true;
         activeMinimap();
+
+        // Bloquea y oculta el cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 
     public void DisableFPSController()
@@ -76,6 +84,10 @@ public class PanelManager : MonoBehaviour
         FPSController.GetComponent<VRMouseCamera>().enabled = false;
         FPSController.GetComponent<VRSphereNavigation>().enabled = false;
         FPSController.GetComponent<ObjectManipulation>().enabled = false;
+
+        // Desbloquea y muestra el cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void activeMinimap()
