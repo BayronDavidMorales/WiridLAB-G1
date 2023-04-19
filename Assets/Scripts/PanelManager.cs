@@ -77,7 +77,7 @@ public class PanelManager : MonoBehaviour
 
         // Bloquea y oculta el cursor
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.visible = false;
 
     }
 
@@ -104,7 +104,16 @@ public class PanelManager : MonoBehaviour
         // Recorre los objetos y activa el componente "MiniMapComponent"
         foreach (GameObject obj in objectsToManipulate)
         {
-            obj.GetComponent<MiniMapComponent>().enabled = true;
+
+            // Imprime el nombre del objeto en la consola de Unity
+            Debug.Log("Object: " + obj.name);
+
+            try
+            {
+                obj.GetComponent<MiniMapComponent>().enabled = true;
+            }
+            catch { }
+
         }
     }
 

@@ -12,12 +12,19 @@ public class VRMouseCamera : MonoBehaviour
     // Método Start se ejecuta al inicio del juego
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor del mouse en el centro de la pantalla
+        // Verifica si la cámara actual es la cámara principal
+        //if (Camera.main == GetComponent<Camera>())
+        //{
+        //    //Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor del mouse en el centro de la pantalla
+        //}
     }
 
     // Método Update se ejecuta una vez por frame
     void Update()
     {
+        // Verifica si la cámara actual es la cámara principal
+        if (Camera.main != GetComponent<Camera>()) return;
+
         if (!cameraEnabled) return; // Si el movimiento de cámara está deshabilitado, sale del método
 
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));

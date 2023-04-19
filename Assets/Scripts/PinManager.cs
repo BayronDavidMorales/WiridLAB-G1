@@ -13,6 +13,7 @@ public class PinManager : MonoBehaviour
     private Ray rayito;
     public GameObject[] nodos;
     public GameObject[] pines;
+    private Renderer[] pinRenderers;
 
     //Menú lateral
     public GameObject panelMenuLat;
@@ -24,32 +25,21 @@ public class PinManager : MonoBehaviour
     {
         cam = Camera.main;
         rectTransformMenuLat = panelMenuLat.GetComponent<RectTransform>();
+        pinRenderers = new Renderer[pines.Length];
         for (int i = 0; i < nodos.Length; i++)
         {
             nodos[i].SetActive(false);
+            pinRenderers[i] = pines[i].GetComponent<Renderer>();
         }
     }
-
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Vector3 wp = new Vector3( Input.mousePosition.x, Input.mousePosition.y, 0f );
-            //Vector3 wpCal=  new Vector3( wp.x, Input.mousePosition.y, 0f );
-
-            //Posición del mouse al hacer evento down
-            /*Vector3 point = new Vector3();
-            Event   currentEvent = Event.current;
-            Vector2 mousePos = new Vector2();
-            mousePos.x = Input.mousePosition.x;
-            mousePos.y = cam.pixelHeight - Input.mousePosition.y;
-            point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));*/
-
             rayito = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(rayito, out RaycastHit raycastHit))
             {
-                //Cambio de estado del nodo presionado
                 for (int i = 0; i < pines.Length; i++)
                 {
                     Collider coll = pines[i].GetComponent<Collider>();
@@ -61,7 +51,6 @@ public class PinManager : MonoBehaviour
                     }
                 }
             }
-
         }
     }
 
@@ -71,6 +60,7 @@ public class PinManager : MonoBehaviour
         {
             visible = false;
             nodos[i].SetActive(false);
+            pinRenderers[i].enabled = true;
         }
         else if (visible == true && nodoaux != i)
         {
@@ -78,31 +68,25 @@ public class PinManager : MonoBehaviour
             {
                 if (j == i)
                 {
-                    try {
-                        nodos[j].SetActive(true);
-                        nodoaux = i;
-                    }
-                    catch { }
+                    nodos[j].SetActive(true);
+                    pinRenderers[j].enabled = false;
+                    nodoaux = i;
                 }
                 else
                 {
                     nodos[j].SetActive(false);
+                    pinRenderers[j].enabled = true;
                 }
             }
         }
         else
         {
-            
-            try
-            {
-                visible = true;
-                nodoaux = i;
-                nodos[i].SetActive(true);
-            }
-            catch { }
+            visible = true;
+            nodoaux = i;
+            nodos[i].SetActive(true);
+            pinRenderers[i].enabled = false;
         }
     }
-
     public void setpositionLatPanel(int i)
     {
         if (isopenlat == false || i != nodoaux)
