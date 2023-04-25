@@ -1792,7 +1792,7 @@ GameObject:
   - component: {fileID: 450660007}
   - component: {fileID: 450660006}
   m_Layer: 0
-  m_Name: Pintextura
+  m_Name: Pin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2850,7 +2850,7 @@ GameObject:
   - component: {fileID: 718282909}
   - component: {fileID: 718282908}
   m_Layer: 0
-  m_Name: Pin
+  m_Name: PinColl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4307,7 +4307,7 @@ MonoBehaviour:
   nodos:
   - {fileID: 1701844576}
   pines:
-  - {fileID: 718282907}
+  - {fileID: 450660005}
   panelMenuLat: {fileID: 768060604}
   tituloNodo: {fileID: 1570352794}
   descripcionNodo: {fileID: 839163779}
