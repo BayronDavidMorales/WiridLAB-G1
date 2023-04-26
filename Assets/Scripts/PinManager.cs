@@ -1,29 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+
 using TMPro;
 
 public class PinManager : MonoBehaviour
 {
     bool visible=false;
-    bool isopenlat=false;
     int nodoaux;
     
-    private Camera cam;
+    public Camera cam;
     private Ray rayito;
     public GameObject[] nodos;
     public GameObject[] pines;
 
-    //Menú lateral
-    public GameObject panelMenuLat;
-    RectTransform rectTransformMenuLat;
+    //Menú 
     public TextMeshProUGUI tituloNodo;
     public TextMeshProUGUI descripcionNodo;
+    public Camera camDispositivos;
+    public Canvas canvasPrin;
 
     void Start()
     {
-        cam = Camera.main;
-        rectTransformMenuLat = panelMenuLat.GetComponent<RectTransform>();
+        cam.enabled=true;
+        camDispositivos.enabled=false;
         for(int i=0; i<nodos.Length;i++){
             nodos[i].SetActive(false);  
         }
@@ -31,29 +33,19 @@ public class PinManager : MonoBehaviour
 
 
     void Update(){
-        if(Input.GetMouseButtonDown(0)){
-            //Vector3 wp = new Vector3( Input.mousePosition.x, Input.mousePosition.y, 0f );
-            //Vector3 wpCal=  new Vector3( wp.x, Input.mousePosition.y, 0f );
-
-            //Posición del mouse al hacer evento down
-            /*Vector3 point = new Vector3();
-            Event   currentEvent = Event.current;
-            Vector2 mousePos = new Vector2();
-            mousePos.x = Input.mousePosition.x;
-            mousePos.y = cam.pixelHeight - Input.mousePosition.y;
-            point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));*/
-
+        if(Input.GetMouseButtonDown(0)){            
             rayito = cam.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(rayito, out RaycastHit raycastHit)){
                 //Cambio de estado del nodo presionado
                 for(int i=0; i<pines.Length;i++){
-                    CapsuleCollider2D coll = pines[i].GetComponent<CapsuleCollider2D>();
+                    if(raycastHit.collider == pines[i].GetComponent<Collider>()){
                         cambiarEstadoNodo(i);
-                        setpositionLatPanel(i);
+                        setTexto(i);
+                        cambiarACamaraDispositivo();
                         break;
+                    }                           
                 }
             }
-      
         }
     }
 
@@ -77,9 +69,7 @@ public class PinManager : MonoBehaviour
         }
     }
 
-    public void setpositionLatPanel(int i){
-        if(isopenlat == false){
-            rectTransformMenuLat.anchoredPosition = new Vector2(-720,0);
+    public void setTexto(int i){
             switch (i){
                 case 0: // Nodo Radio 72
                     tituloNodo.text="Nodo Radio<br>No. 72";
@@ -112,13 +102,18 @@ public class PinManager : MonoBehaviour
                     descripcionNodo.text="Verifique actualizar la página";
                     break;
             }
-            isopenlat = true;
-        }else{
-            rectTransformMenuLat.anchoredPosition = new Vector2(-1105, 0);
-            tituloNodo.text="";
-            descripcionNodo.text="";
-            isopenlat = false;
-        }
+    }
+
+    public void cambiarACamaraMain(){
+        camDispositivos.enabled=false;
+        cam.enabled=true;
+        canvasPrin.enabled=true;
+    }
+
+    public void cambiarACamaraDispositivo(){
+        camDispositivos.enabled=true;
+        cam.enabled=false;
+        canvasPrin.enabled=false;
     }
     
 
