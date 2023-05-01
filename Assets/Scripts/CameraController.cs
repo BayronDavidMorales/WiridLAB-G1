@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject t1;
     [SerializeField] private GameObject t2;
     [SerializeField] private GameObject panelConfiguracion;
+    [SerializeField] private Canvas panelInformacion;
     [SerializeField] private Camera cameraMain;
 
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(panelInicio.activeSelf == false && t1.activeSelf == false && t2.activeSelf == false && panelConfiguracion.activeSelf == false && cameraMain.isActiveAndEnabled == true){
+        if(panelInicio.activeSelf == false && t1.activeSelf == false && t2.activeSelf == false && panelConfiguracion.activeSelf == false && cameraMain.isActiveAndEnabled == true && panelInformacion.enabled == false){
             if(Input.GetMouseButton(0)){
                 //Rotate our camera according to the mouse
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x+Input.GetAxis("Mouse Y") * Time.deltaTime * rotateSpeed,  transform.localEulerAngles.y-Input.GetAxis("Mouse X") * Time.deltaTime * rotateSpeed , 0 );
@@ -38,6 +39,9 @@ public class CameraController : MonoBehaviour
                 zoomAmount = Mathf.Clamp(zoomAmount + Input.GetAxis("Mouse Y") * Time.deltaTime * zoomSpeed, -4.0f, 4.0f);
                 Camera.main.transform.localPosition = new Vector3(0,0, zoomAmount);
             }
+        }
+        if(panelInformacion.enabled == true){
+            cameraMain.enabled = false;
         }
         
     }
