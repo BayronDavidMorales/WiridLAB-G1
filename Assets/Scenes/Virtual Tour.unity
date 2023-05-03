@@ -2479,7 +2479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -550.0001, y: 325}
+  m_AnchoredPosition: {x: -550.0002, y: 325}
   m_SizeDelta: {x: -1300, y: -950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838116200
@@ -2869,7 +2869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -550.0001, y: -111.5}
+  m_AnchoredPosition: {x: -550.0002, y: -111.5}
   m_SizeDelta: {x: -1300, y: -423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890246725
@@ -5334,6 +5334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nodo 72
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5221045829f4a0e46b88b24b791a84cc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5221045829f4a0e46b88b24b791a84cc, type: 3}
 --- !u!4 &1312769207 stripped
@@ -5341,6 +5345,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5221045829f4a0e46b88b24b791a84cc, type: 3}
   m_PrefabInstance: {fileID: 1312769206}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1312769210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173324214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04853607, y: 0.023859924, z: 0.007963335}
+  m_Center: {x: -0.000000007450581, y: -0.000000014901161, z: 0}
 --- !u!1 &1320880855
 GameObject:
   m_ObjectHideFlags: 0
@@ -6967,6 +6984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nodo 109
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7757db1e8350f14785996508399c0e3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7757db1e8350f14785996508399c0e3, type: 3}
 --- !u!4 &1610845038 stripped
@@ -6974,6 +6995,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7757db1e8350f14785996508399c0e3, type: 3}
   m_PrefabInstance: {fileID: 1610845037}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1610845039
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843129961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.019236, y: 1.6681677, z: 2.1148696}
+  m_Center: {x: 0.21968462, y: -0.04043318, z: 0.14755039}
 --- !u!1 &1641936432
 GameObject:
   m_ObjectHideFlags: 0
@@ -8447,6 +8481,7 @@ GameObject:
   - component: {fileID: 1973923212}
   - component: {fileID: 1973923211}
   - component: {fileID: 1973923213}
+  - component: {fileID: 1973923214}
   m_Layer: 0
   m_Name: OrbitCamera
   m_TagString: MainCamera
@@ -8541,6 +8576,23 @@ MonoBehaviour:
   - 1.1
   panelInformacion: {fileID: 1422100161}
   angle: -130
+--- !u!114 &1973923214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973923209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9cfea462250f34eb2ce8c1d0e4fc9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  rotationSpeed: 10
+  zoomSpeed: 0.1
 --- !u!1 &1976031505
 GameObject:
   m_ObjectHideFlags: 0
